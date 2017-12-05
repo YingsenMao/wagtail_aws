@@ -1,0 +1,170 @@
+/* Photo portfolio styles */
+
+/** FROM styles.css **/
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700|Karma:400,300,700);
+
+body {
+    font-family: 'Karma', serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+a {
+    color: #6a9fb5;
+}
+
+ a:hover {
+    color: #75b5aa;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+h5 {
+    font-family: 'Lato', sans-serif;
+    font-variant: small-caps;
+    font-size: 20px;
+    font-weight: 400;
+    color: #999;
+}
+
+header nav.navbar {
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, .95);
+}
+
+#fix-top-nav a {
+    color: #6a9fb5;
+}
+
+#fix-top-nav a:hover {
+    color: #75b5aa;
+}
+
+#fix-top-nav li.active > a {
+    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, .95);
+}
+
+/** Begin unique styles **/
+
+h1#name-text {
+    font-variant: small-caps;
+    margin-top: 10px;
+}
+
+h2#photography-header {
+    font-variant: small-caps;
+    padding-left: 10px; /* letter-spacing fucks with centering */
+    letter-spacing: 10px;
+    margin: 0;
+}
+
+/** Subnav **/
+
+ul#photo-subnav {
+    margin: 30px auto;
+    display: inline-block;
+}
+
+ul#photo-subnav > li.active > a,
+ul#photo-subnav > li.active > a:hover,
+ul#photo-subnav > li > a:hover {
+    background-color: #fff;
+    color: #75b5aa;
+    border-bottom: 2px solid;
+}
+
+/** Photo grid **/
+
+/** THANK YOU NATHAN RYAN for aspect ratio divs: http://ansciath.tumblr.com/post/7347495869/css-aspect-ratio **/
+/** THANK YOU SALMAN A for vertically centering images with the dummy-element aspect ratio hack: http://stackoverflow.com/a/23761123/1599584 **/
+.photo-card {
+    margin-bottom: 20px;
+}
+
+.image-thumb-aspect-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.image-thumb-dummy {
+    padding-top: 100%;
+}
+
+.image-thumb-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.image-thumb-wrapper img {
+    position: absolute;
+    top: -999px;
+    bottom: -999px;
+    left: -999px;
+    right: -999px;
+    margin: auto;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+h4.photo-location {
+    margin: 10px auto 0 auto;
+    font-size: 16px;
+}
+
+h5.photo-date {
+    font-size: 14px;
+}
+
+.photo-caption-location {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.photo-caption-date {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-variant: small-caps;
+}
+
+@media (max-width: 767px) {
+    .image-thumb-dummy {
+        visibility: hidden;
+        padding: 0;
+    }
+
+    .image-thumb-wrapper {
+        position: relative;
+    }
+
+    .image-thumb-wrapper img {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 0px auto;
+        max-height: none;
+    }
+
+    ul#photo-subnav > li {
+        float: none;
+    }
+}

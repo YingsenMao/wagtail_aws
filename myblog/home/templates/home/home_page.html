@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+<!--
+    <h1>Welcome to your new Wagtail site!</h1>
+
+    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
+
+    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+-->
+<header class="visible-xs visible-sm">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#fix-top-nav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="fix-top-nav">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://xjtian.com">Home</a></li>
+                    <li><a href="http://blog.xjtian.com">Blog</a></li>
+                    <li><a href="https://github.com/xjtian">GitHub</a></li>
+                    <li><a href="http://xjtian.photos">Photography</a></li>
+                    <li><a href="assets/docs/resume-public.pdf">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="row content-row">
+        <div class="col-xs-12 col-md-3 side-nav">
+            <div id="side-nav-iwrapper" data-spy="affix">
+                <img src="{% static 'image/head.gif' %}" style="width:60%;height:60%;" alt="skiing selfie" class="img-responsive img-circle profile-img">
+
+                <h1 class="name">Daniel Mao</h1>
+                <h2 class="blurb">I sling code and barbells with similar ease.</h2>
+
+                <nav class="hidden-sm hidden-xs">
+                    <ul class="vertical-nav">
+                        <li><a href="http://xjtian.com"><span class="icon-home-outline"></span>Home</a></li>
+                        <li><a href="http://blog.xjtian.com"><span class="icon-pencil"></span>Blog</a></li>
+                        <li><a href="https://github.com/xjtian"><span class="icon-github-circled"></span>GitHub</a></li>
+                        <li><a href="http://xjtian.photos"><span class="icon-instagram"></span>Photography</a></li>
+                        <li><a href="assets/docs/resume-public.pdf"><span class="icon-doc-text"></span>Resume</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-9 body-content">
+            <p class="lead">Hi! My name is Xiaochen Tian, but you can call me Jacky - everyone does. I'm a full-stack software engineer at Palantir Technologies in Palo Alto, California, a <a href="http://xjtian.photos">photographer</a>, and a competitive Olympic weightlifter.
+
+            <hr>
+
+            <h1>Projects</h1>
+            <div class="row projects-row">
+
+            </div>
+
+            <hr>
+
+            <h1>Skills</h1>
+            <div class="row skills-row">
+                <div class="col-xs-12 col-sm-6">
+                    <h4>Languages</h4>
+                    <h5>By order of Familiarity</h5>
+                    <ul>
+                        <li>Python</li>
+                        <li>Javascript</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>C</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <h4>Toolbox</h4>
+                    <h5>Software Libraries and Frameworks</h5>
+                    <ul>
+                        <li>Django</li>
+                        <li>jQuery, jQueryUI</li>
+                        <li>Twitter Bootstrap</li>
+                        <li>{{ mustache.js }}</li>
+                        <li>Python scientific stack: numpy, scipy, matplotlib, iPython</li>
+                        <li>d3.js</li>
+                    </ul>
+
+                    <h5>Tools</h5>
+                    <ul>
+                        <li>Git</li>
+                        <li>Vagrant</li>
+                        <li>MySQL</li>
+                        <li>Apache</li>
+                        <li>Photoshop</li>
+                    </ul>
+
+                    <h5>Skills</h5>
+                    <ul>
+                        <li>Web Development: HTML/CSS, REST, AJAX, API design</li>
+                        <li>LAMP server administration</li>
+                        <li>Responsive web design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <h1>Work Experience</h1>
+            <div class="row work-exp-row">
+                <div class="col-xs-12 col-sm-4">
+                    <h3>Bloomberg LP</h3>
+                    <h4>Software Developer Intern</h4>
+                    <h5>Summer 2014</h5>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <p>At Bloomberg, I interned with the Mortgages team, working as a full-stack developer on a pair of internal Bloomberg Terminal functions (MBRO, MRPO) that were used by modelers to perform complex queries on the status of mortgage-backed security deals.</p>
+                </div>
+            </div>
+
+            <div class="row work-exp-row">
+                <div class="col-xs-12 col-sm-4">
+                    <h3>JHU Applied Physics Laboratory</h3>
+                    <h4>Technical Intern</h4>
+                    <h5>Summer 2013</h5>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <p>During summer 2013, I interned at JHUAPL, working as a developer on the <a href="http://hub.jhu.edu/gazette/2012/november/news-in-brief-armstrong-grant">EMERGE ICU Initiative</a>. The majority of my responsibilities involved front-end development on a clinical web application for physicians at the Johns Hopkins Hospital SICU.</p>
+
+                    <p>I also designed and fully implemented a re-engineered system architecture for a data-driven approach to physical therapy inside the ICU. This subproject involved developing a RESTful API for data collection and retrieval, interactive data displays in d3.js, and a web application using HTML5 WebSockets for physical therapists to remotely control data collection devices during PT sessions.</p>
+                </div>
+            </div>
+
+            <div class="row work-exp-row">
+                <div class="col-xs-12 col-sm-4">
+                    <h3>JHU Applied Physics Laboratory</h3>
+                    <h4>Technical Intern</h4>
+                    <h5>Summer 2012</h5>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <p>Over the summer and winter breaks of 2012, I interned as a software developer at the Applied Physics Laboratory, where I worked with the Revolutionizing Prosthetics Phase 3 team responsible for the <a href="https://www.youtube.com/watch?v=DjzA9b9T3d8">Modular Prosthetic Limb</a>. My work was focused on developing applications to facilitate operation of the MPL through different hardware controls, such as writing drivers for devices like inertial sensors and wired gloves.</p>
+
+                    <p>I replaced a command-line MATLAB application that engineers were using to test the MPL with a faster re-implementation in C# with a much more user-friendly graphical UI. This application was demonstrated by project managers at the 2012 Neural Interfaces Conference in Salt Lake City, UT.</p>
+
+                    <p>I also developed a 3D Scrabble game in the Unity 3D game engine as a training and rehabilitation tool for patients in the RP3 program. Gameplay involved operating a virtual model of the MPL to touch letters and positions on a Scrabble board to play words against a static move generator with scalable difficulty.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h1>Education</h1>
+            <div class="row education-row">
+                <div class="col-xs-12 col-sm-4">
+                    <h3>University of Maryland</h3>
+                    <h4>B.S. in Computer Science</h4>
+                    <h5>Class of 2015</h5>
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <h4>Awards, Honors and Achievements</h4>
+                    <ul>
+                        <li>Banneker/Key Scholarship (full 4-year scholarship, ~150 recipients in 2012)</li>
+                        <li>Alpha Lambda Delta Honors Society</li>
+                        <li>Design, Cultures &amp; Creativity Honors Program</li>
+                        <li>UMD CS Honors Program</li>
+                        <li>1st place team at Google Games DC 2014!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
