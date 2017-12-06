@@ -1,4 +1,4 @@
-### Basic Set Up
+## Basic Set Up
 Create the environment outside the working folder
 ```
 virtualenv website
@@ -13,22 +13,29 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
-### Wagtail Basic
-#### Relationship among Model, Page, and Template
-The **Page** and its **editor interface** in Wagtail admin are created through Django **model**. All page models must inherit from the *wagtail.wagtailcore.models.Page* class.  [Page Reference](http://docs.wagtail.io/en/v1.13.1/topics/pages.html)  
-
-The Model defines:
+## Wagtail - Page Model, Page, and Template
+The **Page** and its **editor interface** in Wagtail admin are created through Django **model**. All page models must inherit from the *wagtail.wagtailcore.models.Page* class. **Each** Page Model corresponds to **one** Page from Wagtail admin. **Each** Page points to one HTML **template** as the frontend. [Page Reference](http://docs.wagtail.io/en/v1.13.1/topics/pages.html)  
+### Page Model
+The **Page Model** defines:
 * **Fields** - It defines database fields of the Page, you can use any field type that Django provides.  
 * **Editing Pannel** - It defines the capabilities and the layout of the editing interface. The syntax is *content_panels*.  
-Run ```python manage.py makemigrations``, then ``python manage.py migrate`` to update the database with your model changes. You must run the above commands each time you make changes to the model definition.  
 
-The Page in Wagtail Admin follows the concept of **hierachical tree structures** consisting of nodes and leaves. You can create as many as pages as **children** of a different page.  
-
-Each Model corresponds to one Page in Wagtail admin. Each Page points to one HTML template as the frontend. Therefore, a HTML template have to be created for each page model created. Wagtail target the template using the App name followed by Page Model name seperated by underscore. (e.g. HomePage within the ‘home’ app becomes home/home_page.html)  
+Run ```python manage.py makemigrations```, then ```python manage.py migrate`` to update the database with your model changes. You must run the above commands each time you make changes to the model definition.  
+### Page and its hierachical tree structures
+The Page in Wagtail Admin follows the concept of **hierachical tree structures** consisting of nodes and leaves. You can create as many as pages as **children** of a different page. In this case, you create BlogPage as child of the BlogIndexPage, and you can access BlogPage instances using *.get_children* method in **blog_index_page.html** template as below.
+```html
+{% for post in page.get_children %}
+    <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+    {{ post.specific.intro }}
+    {{ post.specific.body|richtext }}
+{% endfor %}
+```
+### Template
+A HTML template must be created for each page model. Wagtail targets the template using the App name followed by Page Model name seperated by underscore. (e.g. HomePage within the ‘home’ app becomes home/home_page.html)  
 <img src="1.PNG" width="480">  
 
 #### Template Context
-Wagtail renders templates with the page variable bound to the page instance being rendered. Use this to access the content of the page. For example, to get the title of the current page, use ```{{ page.title }}```.  
+Wagtail renders templates with the **page** variable bound to the page instance being rendered. Use this to access the content of the page. For example, to get the title of the current page, use ```{{ page.title }}```.  
 The template context can be customized using **get_context** method. Below is an example.  
 ```python 
 class BlogIndexPage(Page):
