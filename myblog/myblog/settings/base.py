@@ -145,3 +145,4 @@ BASE_URL = 'http://example.com'
 #C:\Users\Daniemao\Documents\wagtail\blogSite\myblog\myblog
 #print(BASE_DIR)
 #C:\Users\Daniemao\Documents\wagtail\blogSite\myblog
+ALLOWED_HOSTS = ['*']
